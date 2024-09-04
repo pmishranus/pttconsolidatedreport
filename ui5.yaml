@@ -1,0 +1,46 @@
+specVersion: "3.1"
+metadata:
+  name: nus.edu.consolidatedreport.claimconsolidatereport
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: ""
+            destination: nusbtpbldest
+          - path: /tokenauthorize
+            destination: nusbtpbldest
+            url: ""
+            pathPrefix: /nusbtpbl/tokenauthorize
+          - path: /odata
+            destination: nusbtpbldest
+            url: ""
+            pathPrefix: /nusbtpbl/odata
+          - path: /rest
+            destination: nusbtpbldest
+            url: ""
+            pathPrefix: /nusbtpbl/rest
+          - path: /IASUserScim
+            destination: IDP_USER_SCIM
+            url: ""
+            pathPrefix: /
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: nus.edu.consolidatedreport.claimconsolidatereport
+        ui5Theme: sap_fiori_3

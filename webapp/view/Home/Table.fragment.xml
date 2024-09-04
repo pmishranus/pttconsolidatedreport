@@ -1,0 +1,101 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:u="sap.uxap"
+	xmlns:tnt="sap.tnt">
+	<!--<ScrollContainer height="350px" vertical="true">-->
+	<ScrollContainer horizontal="true" vertical="true" focusable="true">
+		<Table id="idClaimRequestsTable" inset="false" growing="true" growingThreshold="20" growingScrollToLoad="true"
+			itemPress="onPressRequestItem" sticky="ColumnHeaders,HeaderToolbar"
+			items="{ path: 'EclaimSrvModel>/EclaimRequestViews', sorter: { path: 'DRAFT_ID', descending: true}, parameters:{expand : 'MasterClaimTypeDetails,EclaimsItemDataDetails,StatusConfigDetails'},templateShareable:true}">
+			<headerToolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<!--<Button icon="sap-icon://sort" press="onPressSortRequest" text="Sort" type="Transparent" visible="true"/>-->
+					<Button id="exportExcel" press="onDataExport" icon="sap-icon://excel-attachment" text="Download" type="Transparent"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<Label design="Bold" text="Claim No." tooltip="Claim Number" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<Label design="Bold" text="Year" tooltip="Year" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<Label design="Bold" text="Claim Month" tooltip="Claim Month" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet">
+					<Label design="Bold" text="Claim Type" tooltip="Type of Claim" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet">
+					<Label design="Bold" text="Status" tooltip="Status of Claim" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet">
+					<Label design="Bold" text="Staff No." tooltip="Staff No." wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet">
+					<Label design="Bold" text="Staff Name" tooltip="Staff Name" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="ULU Code" tooltip="ULU Code" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="ULU Name" tooltip="ULU Name" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="FDLU Code" tooltip="FDLU Code" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="FDLU Name" tooltip="FDLU Name" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet">
+					<Label design="Bold" text="Emp. Group" tooltip="Employee Group" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="DOJ" tooltip="Date of Joining" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="Rate Type" tooltip="Rate Type of Submitted Claim" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="Hours / Unit" class="tableDataTextSize"
+						tooltip="Summation of Hours or Unit on the basis of Claim Number, WBS, Rate Type, Period, Staff Details" wrapping="true"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="Total Amount" tooltip="Summation of Amount on the basis of Claim Number, WBS, Rate Type, Period, Staff Details"
+						wrapping="true" class="tableDataTextSize"/>
+				</Column>
+				<Column width="10rem" hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Label design="Bold" text="WBS" tooltip="WBS" wrapping="true" class="tableDataTextSize"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Active" press="onPressPreviewClaimRequest">
+					<cells>
+						<Text text="{= ${EclaimSrvModel>REQUEST_STATUS} === '01' ? 'Draft' : ${EclaimSrvModel>REQUEST_ID} }" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>CLAIM_YEAR}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>CLAIM_MONTH}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>CLAIM_TYPE_T}" class="tableDataTextSize"/>
+						<tnt:InfoLabel text="{EclaimSrvModel>STATUS_ALIAS}" tooltip="{EclaimSrvModel>STATUS_ALIAS}" colorScheme="{EclaimSrvModel>STATUS_COLOR_CODE}"
+							displayOnly="false" class="tableDataTextSize"/>
+						<!--<VBox>-->
+						<Text text="{EclaimSrvModel>STAFF_ID}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>FULL_NM}" class="tableDataTextSize"/>
+						<!--</VBox>-->
+						<!--<VBox>-->
+						<Text text="{EclaimSrvModel>ULU}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>ULU_T}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>FDLU}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>FDLU_T}" class="tableDataTextSize"/>
+						<!--</VBox>-->
+						<Text text="{parts:[{path: 'EclaimSrvModel>EMPLOYEE_GRP'}]}" class="tableDataTextSize"/>
+						<!--<Text text="{ path: 'EclaimSrvModel>DATE_JOINED', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'd MMM, yyyy HH:mm:ss' } }" class="tableDataTextSize"/>-->
+						<Text text="{EclaimSrvModel>DATE_JOINED}" class="tableDataTextSize"/>
+						<Text text="{parts:[{path: 'EclaimSrvModel>RATE_DESC'}]}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>HOURS_UNIT}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>TOTAL_AMOUNT}" class="tableDataTextSize"/>
+						<Text text="{EclaimSrvModel>WBS}" class="tableDataTextSize"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</ScrollContainer>
+</core:FragmentDefinition>

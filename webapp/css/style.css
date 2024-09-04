@@ -1,0 +1,26 @@
+/* Enter your custom styles here */
+/*.tableDataTextSize {
+	    font-size: 0.680rem!important;
+}
+.sapTntInfoLabel .sapTntInfoLabelInner {
+    font-size: 0.58rem!important;
+    font-weight: bold;
+    letter-spacing: 0.01rem!important;
+    text-transform: uppercase;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: break-spaces!important;
+    overflow: hidden;
+    max-width: 100%;
+}
+.sapTntInfoLabel {
+	width:100%!important;
+    box-sizing: border-box;
+    padding: 0.19rem 0.3125rem!important;
+    text-align: center;
+    border-radius: 0.5rem;
+    height: 2rem!important;
+    display: inline-block;
+    max-width: 100%;
+    line-height: normal;
+} */

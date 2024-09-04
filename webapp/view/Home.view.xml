@@ -1,0 +1,14 @@
+<mvc:View controllerName="nus.edu.consolidatedreport.claimconsolidatereport.controller.Home" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}" showHeader="false" titleAlignment="Center">
+					<content>
+						<core:Fragment fragmentName="nus.edu.consolidatedreport.claimconsolidatereport.view.Home.Filter" type="XML"/>
+						<core:Fragment fragmentName="nus.edu.consolidatedreport.claimconsolidatereport.view.Home.Table" type="XML"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</Shell>
+</mvc:View>
