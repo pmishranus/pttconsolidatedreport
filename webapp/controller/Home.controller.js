@@ -218,7 +218,7 @@ sap.ui.define([
 			//var filters = this.generateFilter('CLAIM_TYPE_C', '1', sap.ui.model.FilterOperator.StartsWith);
 			if (userRoleGrp === "NUS_CHRS_ECLAIMS_SUPER_ADMIN" || (!!claimAuthorizations && claimAuthorizations.length > 0)) {
 				var that = this;
-				oDataModel.read("/v_base_eclaim_request_view", {
+				oDataModel.read("/v_eclaim_request_view", {
 					//select: "REQUEST_ID",
 					//parameters: {select: "REQUEST_ID"}
 					filters: aFilter,
@@ -366,7 +366,7 @@ sap.ui.define([
 			if (userRoleGrp === "NUS_CHRS_ECLAIMS_SUPER_ADMIN" || (!!claimAuthorizations && claimAuthorizations.length > 0)) {
 				var that = this;
 
-				oDataModel.read("/v_base_eclaim_request_view", {
+				oDataModel.read("/v_eclaim_request_view", {
 					filters: [filtersGrp],
 					urlParameters: {
 						"$select": "REQUEST_ID"
