@@ -13,6 +13,35 @@
             "id": "ui5template.basicSAPUI5ApplicationProject",
             "version": "1.40.12",
             "toolsId": "90fa774a-8126-4ea5-909f-0793f566da32"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/v2/catalog/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "utilService": {
+                "uri": "/v2/util/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "eclaims": {
+                "uri": "/v2/eclaims/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
         }
     },
     "sap.ui": {
@@ -57,6 +86,35 @@
                 "settings": {
                     "bundleName": "nus.edu.consolidatedreport.claimconsolidatereport.i18n.i18n"
                 }
+            },
+            "": {
+                "dataSource": "utilService",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "synchronizationMode": "None",
+                    "earlyRequests": true
+                }
+            },
+            "Catalog": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "synchronizationMode": "None",
+                    "earlyRequests": true
+                }
+            },
+            "Eclaims": {
+              "dataSource": "eclaims",
+              "preload": true,
+              "settings": {
+                "operationMode": "Server",
+                "autoExpandSelect": true,
+                "earlyRequests": true
+              }
             }
         },
         "resources": {

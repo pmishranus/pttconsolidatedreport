@@ -1,85 +1,52 @@
 {
-  "welcomeFile": "/webapp/index.html",
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
   "routes": [
     {
-      "path": "/resources",
-      "target": {
-        "type": "service",
-        "name": "sapui5",
-        "entryPath": "/resources"
-      },
-      "description": "SAPUI5 Resources"
+      "source": "^/catalog/(.*)$",
+      "target": "/v2/catalog/$1",
+      "destination": "nusbtputil",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
     },
     {
-      "path": "/test-resources",
-      "target": {
-        "type": "service",
-        "name": "sapui5",
-        "entryPath": "/test-resources"
-      },
-      "description": "SAPUI5 Resources"
+      "source": "^/util/(.*)$",
+      "target": "/v2/util/$1",
+      "destination": "nusbtputil",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
     },
     {
-      "path": "/webapp/resources",
-      "target": {
-        "type": "service",
-        "name": "sapui5",
-        "entryPath": "/resources"
-      },
-      "description": "SAPUI5 Resources"
+      "source": "^/user-api(.*)",
+      "target": "$1",
+      "service": "sap-approuter-userapi"
+  },
+    {
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
     },
     {
-      "path": "/webapp/test-resources",
-      "target": {
-        "type": "service",
-        "name": "sapui5",
-        "entryPath": "/test-resources"
-      },
-      "description": "SAPUI5 Test Resources"
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
     },
     {
-		"path": "/tokenauthorize",
-		"target": {
-			"type": "destination",
-			"name": "nusbtpbldest",
-			"entryPath": "/nusbtpbl/tokenauthorize"
-		},
-		"description": "NUS BTP Business Logic Destiantion"
-	},   {
-		"path": "/odata",
-		"target": {
-			"type": "destination",
-			"name": "nusbtpbldest",
-			"entryPath": "/nusbtpbl/odata"
-		},
-		"description": "NUS BTP Business Logic Destiantion"
-	},
-
- {
-		"path": "/rest",
-		"target": {
-			"type": "destination",
-			"name": "nusbtpbldest",
-			"entryPath": "/nusbtpbl/rest"
-		},
-		"description": "NUS BTP Business Logic Destiantion"
-	},	
-	
-	{
-      "path": "/IASUserScim",
+      "path": "/eclaims",
       "target": {
         "type": "destination",
-        "name": "IDP_USER_SCIM"
+        "name": "nusbtpeclaim",
+        "entryPath": "/v2/eclaims"
       },
-      "description": "IAS SCIM API"
+      "description": "NUS BTP Business Logic Destiantion"
     },
     {
-      "path": "/services/userapi",
-      "target": {
-        "type": "service",
-        "name": "userapi"
-      }
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
     }
-  ],
-  "sendWelcomeFileRedirect": true
+  ]
 }

@@ -7,32 +7,22 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: false
-        backend:
-          - path: /sap
-            url: ""
-            destination: nusbtpbldest
-          - path: /tokenauthorize
-            destination: nusbtpbldest
-            url: ""
-            pathPrefix: /nusbtpbl/tokenauthorize
-          - path: /odata
-            destination: nusbtpbldest
-            url: ""
-            pathPrefix: /nusbtpbl/odata
-          - path: /rest
-            destination: nusbtpbldest
-            url: ""
-            pathPrefix: /nusbtpbl/rest
-          - path: /IASUserScim
-            destination: IDP_USER_SCIM
-            url: ""
-            pathPrefix: /
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         ui5:
           path:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
+        backend:
+          - path: /v2/eclaims
+            url: https://national-university-of-singapore-nus-ariba-dev-px55m7l53c18cca4.cfapps.eu10-004.hana.ondemand.com
+            destination: nusbtpeclaim
+          - path: /v2/catalog
+            url: https://national-university-of-singapore-nus-ariba-dev-px55m7l576956a4c.cfapps.eu10-004.hana.ondemand.com
+            destination: nusbtputil
+          - path: /v2/util
+            url: https://national-university-of-singapore-nus-ariba-dev-px55m7l576956a4c.cfapps.eu10-004.hana.ondemand.com
+            destination: nusbtputil
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
