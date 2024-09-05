@@ -4,7 +4,7 @@
 	<ScrollContainer horizontal="true" vertical="true" focusable="true">
 		<Table id="idClaimRequestsTable" inset="false" growing="true" growingThreshold="20" growingScrollToLoad="true"
 			itemPress="onPressRequestItem" sticky="ColumnHeaders,HeaderToolbar"
-			items="{ path: 'EclaimSrvModel>/EclaimRequestViews', sorter: { path: 'DRAFT_ID', descending: true}, parameters:{expand : 'MasterClaimTypeDetails,EclaimsItemDataDetails,StatusConfigDetails'},templateShareable:true}">
+			items="{ path: 'Eclaims>/v_eclaim_item_view', sorter: { path: 'DRAFT_ID', descending: true}, parameters:{expand : 'MasterClaimTypeDetails,EclaimsItemDataDetails,StatusConfigDetails'},templateShareable:true}">
 			<headerToolbar>
 				<OverflowToolbar>
 					<ToolbarSpacer/>
@@ -70,29 +70,29 @@
 			<items>
 				<ColumnListItem type="Active" press="onPressPreviewClaimRequest">
 					<cells>
-						<Text text="{= ${EclaimSrvModel>REQUEST_STATUS} === '01' ? 'Draft' : ${EclaimSrvModel>REQUEST_ID} }" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>CLAIM_YEAR}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>CLAIM_MONTH}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>CLAIM_TYPE_T}" class="tableDataTextSize"/>
-						<tnt:InfoLabel text="{EclaimSrvModel>STATUS_ALIAS}" tooltip="{EclaimSrvModel>STATUS_ALIAS}" colorScheme="{EclaimSrvModel>STATUS_COLOR_CODE}"
+						<Text text="{= ${Eclaims>REQUEST_STATUS} === '01' ? 'Draft' : ${Eclaims>REQUEST_ID} }" class="tableDataTextSize"/>
+						<Text text="{Eclaims>CLAIM_YEAR}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>CLAIM_MONTH}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>CLAIM_TYPE_T}" class="tableDataTextSize"/>
+						<tnt:InfoLabel text="{Eclaims>STATUS_ALIAS}" tooltip="{Eclaims>STATUS_ALIAS}" colorScheme="{Eclaims>STATUS_COLOR_CODE}"
 							displayOnly="false" class="tableDataTextSize"/>
 						<!--<VBox>-->
-						<Text text="{EclaimSrvModel>STAFF_ID}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>FULL_NM}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>STAFF_ID}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>FULL_NM}" class="tableDataTextSize"/>
 						<!--</VBox>-->
 						<!--<VBox>-->
-						<Text text="{EclaimSrvModel>ULU}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>ULU_T}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>FDLU}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>FDLU_T}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>ULU}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>ULU_T}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>FDLU}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>FDLU_T}" class="tableDataTextSize"/>
 						<!--</VBox>-->
-						<Text text="{parts:[{path: 'EclaimSrvModel>EMPLOYEE_GRP'}]}" class="tableDataTextSize"/>
-						<!--<Text text="{ path: 'EclaimSrvModel>DATE_JOINED', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'd MMM, yyyy HH:mm:ss' } }" class="tableDataTextSize"/>-->
-						<Text text="{EclaimSrvModel>DATE_JOINED}" class="tableDataTextSize"/>
-						<Text text="{parts:[{path: 'EclaimSrvModel>RATE_DESC'}]}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>HOURS_UNIT}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>TOTAL_AMOUNT}" class="tableDataTextSize"/>
-						<Text text="{EclaimSrvModel>WBS}" class="tableDataTextSize"/>
+						<Text text="{parts:[{path: 'Eclaims>EMPLOYEE_GRP'}]}" class="tableDataTextSize"/>
+						<!--<Text text="{ path: 'Eclaims>DATE_JOINED', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'd MMM, yyyy HH:mm:ss' } }" class="tableDataTextSize"/>-->
+						<Text text="{Eclaims>DATE_JOINED}" class="tableDataTextSize"/>
+						<Text text="{parts:[{path: 'Eclaims>RATE_DESC'}]}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>HOURS_UNIT}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>TOTAL_AMOUNT}" class="tableDataTextSize"/>
+						<Text text="{Eclaims>WBS}" class="tableDataTextSize"/>
 					</cells>
 				</ColumnListItem>
 			</items>
